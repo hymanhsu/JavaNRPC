@@ -96,7 +96,7 @@ public class NrpcChannel implements RpcChannel, BlockingRpcChannel {
         logger.debug("Found endpoint {}:{} of {}", new Object[]{selectedNode.getIp(), selectedNode.getPort(), serviceFullName});
         try {
             this.socket = socketFactory.createSocket(selectedNode.getIp(), selectedNode.getPort());
-            //this.socket.setSoTimeout(Constants.READ_TIMEOUT_MILIS);
+            this.socket.setSoTimeout(Constants.READ_TIMEOUT_MILIS);
         } catch (UnknownHostException ex) {
             logger.error(ex.getMessage(), ex);
             closeSocket();
